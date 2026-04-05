@@ -30,7 +30,7 @@ export default function ResourcePage() {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken);
     setLoggedIn(!!storedToken);
-    fetch(`http://localhost:3001/api/resources/${id}`)
+    fetch(`http://localhost:3002/api/resources/${id}`)
       .then(res => res.json())
       .then(data => {
         setResource(data);
@@ -43,7 +43,7 @@ export default function ResourcePage() {
 
     // Check saved status if logged in
     if (token) {
-      fetch(`http://localhost:3001/api/user/saved/${id}`, {
+      fetch(`http://localhost:3002/api/user/saved/${id}`, {
         headers: { "Authorization": `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -58,7 +58,7 @@ export default function ResourcePage() {
     
     setIsSaving(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/user/saved/${id}`, {
+      const res = await fetch(`http://localhost:3002/api/user/saved/${id}`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -100,7 +100,7 @@ export default function ResourcePage() {
           <div className={styles.actionSection}>
             {resource.type === "PDF" && resource.file_url ? (
               <a 
-                href={`http://localhost:3001/uploads/${resource.file_url}`} 
+                href={`http://localhost:3002/uploads/${resource.file_url}`} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={styles.primaryAction}
@@ -139,7 +139,7 @@ export default function ResourcePage() {
               <span style={{ fontSize: "0.9rem", opacity: 0.7 }}>(Click view to open full document)</span>
             </div>
             <iframe 
-              src={`http://localhost:3001/uploads/${resource.file_url}#toolbar=0`} 
+              src={`http://localhost:3002/uploads/${resource.file_url}#toolbar=0`} 
               className={styles.iframePreview}
               title="PDF Preview"
             />

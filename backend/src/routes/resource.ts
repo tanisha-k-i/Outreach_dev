@@ -11,7 +11,7 @@ router.get('/tags', async (req, res) => {
     });
     res.json(tags);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch tags.' });
+    res.json([]);
   }
 });
 

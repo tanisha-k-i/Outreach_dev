@@ -28,7 +28,7 @@ export default function Home() {
   const fetchResults = async (searchQuery: string) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/search?q=${encodeURIComponent(searchQuery)}`);
+      const res = await fetch(`http://localhost:3002/api/search?q=${encodeURIComponent(searchQuery)}`);
       
       if (!res.ok) {
         setResults([]);

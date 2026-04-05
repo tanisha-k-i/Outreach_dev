@@ -50,7 +50,7 @@ export default function UploadPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/upload", {
+      const res = await fetch("http://localhost:3002/api/upload", {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` },
         body: data,

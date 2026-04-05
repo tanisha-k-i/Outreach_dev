@@ -43,7 +43,7 @@ export default function ProfilePage() {
   const fetchTabResources = async (token: string, tab: "uploads" | "saved") => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/user/${tab}`, {
+      const res = await fetch(`http://localhost:3002/api/user/${tab}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
