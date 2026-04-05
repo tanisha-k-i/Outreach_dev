@@ -36,8 +36,9 @@ router.get('/uploads', async (req: AuthenticatedRequest, res) => {
       });
       res.json(uploads);
     } catch (dbError) {
-      // Demo mode: return empty uploads
-      res.json([]);
+      // Demo mode: return from memory
+      const { getDemoResourcesByUser } = await import('../demoStore');
+      res.json(getDemoResourcesByUser(userId));
     }
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch uploads.' });

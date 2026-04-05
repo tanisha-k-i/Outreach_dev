@@ -75,8 +75,9 @@ router.get('/', async (req, res) => {
     res.json(formattedResults);
 
   } catch (error) {
-    console.warn('Search: Database unavailable, returning empty results (demo mode).');
-    res.json([]);
+    console.warn('Search: Database unavailable, returning demo resources (demo mode).');
+    const { getDemoResources } = await import('../demoStore');
+    res.json(getDemoResources());
   }
 });
 

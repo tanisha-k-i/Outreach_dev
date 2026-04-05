@@ -3,6 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { authMiddleware, AuthenticatedRequest } from '../middleware/auth';
+import { addDemoResource } from '../demoStore';
 
 const router = Router();
 
@@ -95,6 +96,8 @@ router.post('/', authMiddleware, upload.single('file'), async (req: Authenticate
         created_at: new Date().toISOString(),
         tags: parsedTags.map(t => ({ tag: { name: t.trim().toLowerCase() } }))
       };
+
+      addDemoResource(mockResource);
 
       return res.status(201).json(mockResource);
     }
